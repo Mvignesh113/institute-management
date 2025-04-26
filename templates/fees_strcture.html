@@ -1,0 +1,48 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block title %}
+Totalstudents
+{% endblock title %}
+{% block content %}
+            <div class="col py-3 ">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-6"><h2>Fees Strcture</h2></div>
+                  <div class="col-5">
+                      <div class="input-group rounded">
+                      <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon"id="searchInput"  >
+                      <span class="input-group-text border-0" id="search-addon">
+                        <button class="border-0"onclick="searchTable()"><i class="fa fa-search"></i></button>
+                      </span>
+                    </div></div>
+                    <div class="col-1"><button class="btn btn-success mb-3 p-0 text-white" style="border:none;border-radius: 2px;"><a href="{% url 'fees1_s' %}" class="text-white nav-link">Add+</a></button></div>
+                  </div>
+                      
+  <div class="card">
+    <div class="card-body">
+    <table class="table table-bordered table-responsive text-center"id="dataTable" >
+      <thead>
+        <tr>
+          <th>s.no</th>
+          <th>Course</th>
+          <th>Fees</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for data in std %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{data.coursename}}</td>
+          <td>{{data.coursefees}}</td>
+          <td><a href="/fees2_s/{{data.id}}" class="btn btn-primary" > <i class="fa-solid fa-pen-to-square"></i></a> <a href="/coursed/{{data.id}}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+                </div>
+            </div>
+            {% endblock content %}

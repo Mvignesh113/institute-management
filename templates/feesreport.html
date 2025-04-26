@@ -1,0 +1,53 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block title %}
+Totalstudents
+{% endblock title %}
+{% block content %}
+            <div class="col py-3 ">
+              <div class="container-fluid">
+                <div class="row">
+                    <div class="col-6"><h2>Fees Report</h2></div>
+                    <div class="col-5">
+                        <div class="input-group rounded">
+                        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon"id="searchInput" >
+                        <span class="input-group-text border-0" id="search-addon">
+                            <button class="border-0"onclick="searchTable()"><i class="fa fa-search"></i></button>
+                        </span>
+                      </div></div>
+                      <div class="col-1"><button class="btn btn-success mb-3 p-0 text-white" style="border:none;border-radius: 2px;"><a href="" class="text-white nav-link"onclick="printReport()">Print</a></button></div>
+                </div>
+                      
+  <div class="card">
+    <div class="card-body">
+    <table class="table table-bordered table-responsive  text-center" id="dataTable">
+      <thead>
+        <tr>
+          <th>S.No</th>
+          <th>Id.No</th>
+          <th>Name</th>
+          <th>Course</th>
+          <th>Paid Date</th>
+          <th>Paid Fees</th>
+          <th>Pending Fees </th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for data in std %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{data.idnum}}</td>
+          <td>{{data.Name}}</td>
+          <td>{{data.course}}</td>
+          <td>{{data.paiddate}}</td>
+          <td>{{data.paidfees}}</td>
+          <td>{{data.pendingfees}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock content %}

@@ -1,0 +1,55 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block title %}
+Totalstudents
+{% endblock title %}
+{% block content %}
+            <div class="col py-3 ">
+              <div class="container-fluid">
+                <div class="row">
+                    <div class="col-6"><h2>Total Student</h2></div>
+                    <div class="col-6">
+                        <div class="input-group rounded">
+                        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" id="searchInput" >
+                        <span class="input-group-text border-0" id="search-addon">
+                            <button class="border-0" onclick="searchTable()"><i class="fa fa-search"></i></button>
+                        </span>
+                      </div></div>
+                      
+  <div class="card">
+    <div class="card-body">
+    <table class="table table-bordered table-responsive"id="dataTable">
+      <thead>
+        <tr>
+          <th>S.No</th>
+          <th>Id.No</th>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>Course</th>
+          <th>Duration</th>
+          <th>Ph.No</th>
+          <th>Place</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for data in std %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{data.idnum}}</td>
+          <td>{{data.Name}}</td>
+          <td>{{data.Gender}}</td>
+          <td>{{data.course}}</td>
+          <td>{{data.duration}}</td>
+          <td>{{data.phnum}}</td>
+          <td>{{data.place}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    </div>
+  </div>
+  </div>
+</div>
+            </div>
+{% endblock content %}
+ 

@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <title>
+    {% block title %}
+    {% endblock title %}
+</title>
+</head>
+<body>
+    <!-- navbar -->
+    <nav class="navbar bg-body-tertiary bg-primary "style="">
+        <div class="container-fluid">
+          <a href="" class="navbar-brand text-white nav-link" style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 20px;"><i class="fa-solid fa-user"></i>&nbsp; Admin</a>
+          <form class="d-flex">
+ 
+            <button class="btn btn-success text-white p-0" type=""><a href="{% url 'logout' %}" class="text-white nav-link" >logout</a></button>
+          </form>
+        </div>
+      </nav>
+      <!-- navbar -->
+       <!-- sidebar -->
+       <div class="container-fluid">
+        <div class="row flex-nowrap">
+          <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-primary ">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+ 
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start " id="Dashboard">
+                    <li class="nav-item"> 
+                        <a href="{% url 'dashboard' %}" class="nav-link align-middle px-0 text-white">
+                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 25px; font-weight: 500;">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item"> 
+                        <a href="{% url 'student_d1' %}" class="nav-link align-middle px-0 text-white">
+                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 25px; font-weight: 500;">Student Details</span>
+                        </a>
+                    </li>
+              
+ 
+                    <li>
+                        <a href="{% url 'fees_r' %}" class="nav-link px-0 align-middle text-white">
+                            <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 25px; font-weight: 500;">Fees report</span></a>
+                    </li>
+                    <li>
+                      <a href="{% url 'setting' %}" class="nav-link px-0 align-middle text-white">
+                          <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 25px; font-weight: 500;">Settings</span></a>
+                  </li>
+                </ul>
+       
+            </div>
+        </div>
+          
+             
+       
+    {% block content %}
+    {% endblock content %}
+</div>
+</div>
+    
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="{% static 'assets/js/script.js' %}"></script>
+</body>
+</html>

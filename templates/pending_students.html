@@ -1,0 +1,110 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block title %}
+Pending Fees
+{% endblock title %}
+{% block content %}
+<div class="col py-3">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6"><h2>Pending Fees Details</h2></div>
+            <div class="col-6">
+                <div class="input-group rounded">
+                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" id="searchInput">
+                    <span class="input-group-text border-0" id="search-addon">
+                        <button class="border-0" onclick="searchTable()"><i class="fa fa-search"></i></button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-bordered table-responsive" id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Id.No</th>
+                            <th>Name</th>
+                            <th>Course</th>
+                            <th>Paid Fees</th>
+                            <th>Pending</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for data in std %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ data.idnum }}</td>
+                            <td>{{ data.Name }}</td>
+                            <td>{{ data.course }}</td>
+                            <td>{{ data.paidfees }}</td>
+                            <td>{{ data.pendingfees }}</td>
+                            <td>
+                                <button class="btn btn-success nav-link text-white" onclick="printReceipt('{{ data.idnum }}')">Print</button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Hidden Receipt Template -->
+<div id="receipt" style="display: none;">
+    <h3>Receipt</h3>
+    <p><strong>Id No:</strong> <span id="receipt-id"></span></p>
+    <p><strong>Name:</strong> <span id="receipt-name"></span></p>
+    <p><strong>Course:</strong> <span id="receipt-course"></span></p>
+    <p><strong>Paid Fees:</strong> <span id="receipt-paid"></span></p>
+    <p><strong>Pending Fees:</strong> <span id="receipt-pending"></span></p>
+</div>
+
+<script>
+    function printReceipt(studentId) {
+        // Find the table row with the matching student ID
+        const table = document.getElementById("dataTable");
+        const rows = table.getElementsByTagName("tr");
+        let receiptData = null;
+
+        for (let i = 1; i < rows.length; i++) { // Start at 1 to skip the header row
+            const cells = rows[i].getElementsByTagName("td");
+            if (cells[1].innerText === studentId) {
+                receiptData = {
+                    id: cells[1].innerText,
+                    name: cells[2].innerText,
+                    course: cells[3].innerText,
+                    paid: cells[4].innerText,
+                    pending: cells[5].innerText,
+                };
+                break;
+            }
+        }
+
+        if (receiptData) {
+            // Populate receipt template
+            document.getElementById("receipt-id").innerText = receiptData.id;
+            document.getElementById("receipt-name").innerText = receiptData.name;
+            document.getElementById("receipt-course").innerText = receiptData.course;
+            document.getElementById("receipt-paid").innerText = receiptData.paid;
+            document.getElementById("receipt-pending").innerText = receiptData.pending;
+
+            // Open receipt in a new window and print
+            const receiptContent = document.getElementById("receipt").innerHTML;
+            const printWindow = window.open("", "_blank");
+            printWindow.document.write(`
+                <html>
+                <head><title>Receipt</title></head>
+                <body>${receiptContent}</body>
+                </html>
+            `);
+            printWindow.document.close();
+            printWindow.print();
+        } else {
+            alert("Student data not found.");
+        }
+    }
+</script>
+{% endblock content %}

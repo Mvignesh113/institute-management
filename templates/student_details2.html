@@ -1,0 +1,54 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block title %}
+Totalstudents
+{% endblock title %}
+{% block content %}
+            <div class="col py-3"  >
+                <div class="row">
+                  <div class="col-2"></div>
+                  <div class="col-8">
+                    <div class="card mt-3 " style="background-image: linear-gradient(hwb(223 4% 1%),white); border: none; box-shadow: 15px 10px 10px"  >
+                   <div class="row">
+                    <div class="col-2"></div><div class="col-8">
+                     <form  action="" class="mt-3" method="POST">
+                      {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="formGroupExampleInput2" class="form-label">Id.No:</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput2" name="idnum">
+                          </div>
+                        <div class="mb-3">
+                            <label for="formGroupExampleInput" class="form-label">Name:</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput" name="Name" >
+                          </div>
+                          <div class="mb-3">
+                            <label for="formGroupExampleInput2" class="form-label">Gender:</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput2" name="Gender" >
+                          </div>
+                          <div class="mb-3">
+                            <label for="formGroupExampleInput2" class="form-label">Course:</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput2" name="course">
+                          </div>
+                          <div class="mb-3">
+                            <label for="formGroupExampleInput2" class="form-label">Duration</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput2" name="duration">
+                          </div>
+                          <div class="mb-3">
+                            <label for="formGroupExampleInput2" class="form-label">Ph.no:</label>
+                            <input type="number" class="form-control" id="formGroupExampleInput2" name="phnum" >
+                          </div>
+                          <div class="mb-3">
+                            <label for="formGroupExampleInput2" class="form-label">Place:</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput2" name="place">
+                          </div>
+                          <div class="button text-center"><button type="submit" class="btn btn-success">Add</button></div>
+                     </form>
+                    </div>
+                    <div class="col-2"></div>
+                   </div>
+                  </div>
+                  </div>
+                </div>
+        </div>
+        {% endblock content %}
+ 

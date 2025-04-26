@@ -1,0 +1,53 @@
+ {% extends 'main.html' %}
+ {% load static %}
+ {% block title %}
+ Dashboard
+ {% endblock title %}
+ {% block content %}
+          
+            <div class="col py-3 ">
+                <div class="row">
+                    <div class="col-sm-6">
+                      <div class="card mt-4 dash1" >
+                        <div class="card-body">
+                          <h3 class="card-title">Total Student</h3>
+                          <p class="card-text">{{total_s.id__count}}</p>
+                          <a href="{% url 'total_std' %}" class="btn btn-success">view <i class="fa-solid fa-caret-down"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                      <div class="card mt-4 dash1">
+                        <div class="card-body">
+                          <h3 class="card-title">Paid Fees</h3>
+                          <p class="card-text">{{paidfees}}</p>
+                          <a href="{% url 'paid_std' %}" class="btn btn-success">view <i class="fa-solid fa-caret-down"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                        <div class="card mt-5 dash1">
+                          <div class="card-body">
+                            <h3 class="card-title">Pending Fees</h3>
+                            <p class="card-text">{{pending}}</p>
+                            <a href="{% url 'pending_std' %}" class="btn btn-success">view <i class="fa-solid fa-caret-down"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="card mt-5 dash1">
+                          <div class="card-body">
+                            <h3 class="card-title">Fees Strcture</h3>
+                            <p class="card-text">Course Based Price</p>
+                            <a href="{% url 'fees_s' %}" class="btn btn-success">view <i class="fa-solid fa-caret-down"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                
+            </div>
+ 
+    {% endblock content %}
+    
+
+ 
